@@ -6,6 +6,7 @@
 	</typeAliases>
 
 	<mappers>
+	<mapper resource="mapper/mainMapper.xml"/>
 	</mappers>
 
 </configuration>

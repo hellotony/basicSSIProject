@@ -6,14 +6,14 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Dao {
+public class MainDao {
 	
 	@Resource
 	protected SqlSessionTemplate sqlSessionTemplate;
 
 	public void add() {
 		// TODO Auto-generated method stub
-		this.sqlSessionTemplate.insert("model.insert");
+		this.sqlSessionTemplate.insert("main.insert");
 	}
 
 	public SqlSessionTemplate getSqlSessionTemplate() {
@@ -22,5 +22,15 @@ public class Dao {
 
 	public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate = sqlSessionTemplate;
+	}
+
+	//通过用户名 拿到密码
+	public User getUserByName(String parameter) {
+		// TODO Auto-generated method stub
+		return this.sqlSessionTemplate.selectOne("main.getUserByName", parameter);
+	}
+
+	public void saveUser(User user) {
+		 this.sqlSessionTemplate.insert("main.saveUser", user);
 	}
 }
